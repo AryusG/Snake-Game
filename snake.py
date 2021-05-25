@@ -10,9 +10,6 @@ LEFT = 180
 RIGHT = 0
 
 class Snake:
-    # TODO Create an attribute
-    # TODO Create a method called move
-
     def __init__(self):
         self.segments = []  # all turtle objects
         self.create_snake()
@@ -28,6 +25,13 @@ class Snake:
         snake_part.penup()
         snake_part.goto(position)
         self.segments.append(snake_part)
+
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
 
     def extend(self):
         self.add_segment(self.segments[-1].position())
